@@ -8,5 +8,5 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["bentoml", "serve", "service:ClothingClassifier", "--port", "3000"]
+CMD ["bentoml", "serve", "service:svc", "--port", "3000"]
 
