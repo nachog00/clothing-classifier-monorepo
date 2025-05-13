@@ -1,0 +1,114 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - normalise_headers
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_csv
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_csv
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/normalise_headers.py
+    file_source:
+      path: transformers/normalise_headers.py
+  downstream_blocks:
+  - keep
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: normalise headers
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_csv
+  uuid: normalise_headers
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/keep.py
+    file_source:
+      path: transformers/keep.py
+  downstream_blocks:
+  - auto_label
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: keep
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - normalise_headers
+  uuid: keep
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: auto-label
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - keep
+  uuid: auto_label
+- all_upstream_blocks_executed: true
+  color: yellow
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: model
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - auto_label
+  uuid: model
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-05-13 01:44:25.306349+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: clothing_classifier
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: clothing_classifier
+variables_dir: /home/src/mage_data/clothing_classifier
+widgets: []
