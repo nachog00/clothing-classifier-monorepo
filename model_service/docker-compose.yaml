@@ -1,0 +1,7 @@
+services:
+    model_service:
+      build: .
+      container_name: clothing_model_api
+      ports:
+        - "6788:3000"
+

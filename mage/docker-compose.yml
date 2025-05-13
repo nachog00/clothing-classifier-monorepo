@@ -7,14 +7,9 @@ services:
     ports:
       - "6789:6789"
     volumes:
-      - ./mage:/home/src
-      - ./mage/.mage_data:/home/src/.mage_data
+      - ./volume:/home/src
+      - ./volume/.mage_data:/home/src/.mage_data
+      - ../model_service/model:/home/src/model_output 
     environment:
       - USER_CODE_PATH=.
     command: mage start ${PROJECT_NAME:-clothing_classifier}
-
-  model_service:
-    build: ./model_service
-    container_name: clothing_model_api
-    ports:
-      - "8000:3000"
