@@ -1,0 +1,12 @@
+service: service:ClothingClassifier
+labels:
+  owner: "you"
+  project: "clothing-classifier"
+include:
+  - service.py
+  - model/clothing_classifier.pkl
+python:
+  packages:
+    - scikit-learn
+    - joblib
+    - bentoml
